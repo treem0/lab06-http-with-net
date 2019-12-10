@@ -10,4 +10,13 @@ describe('createResponse', () => {
         expect(response.status).toEqual(200);
       });
   });
+  it('returns an echo of the body sent', () => {
+    return request(app)
+      .post('/echo')
+      .send(app)
+      .then(response => {
+        expect(response.status).toEqual(200);
+        expect(response.body).toEqual(response.body);
+      });
+  });
 });
